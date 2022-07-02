@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./pages/index.css" />
+        <title>Mesto</title>
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
-</head>
+    <body class="page">
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
+        </header>
 
-<body class="page">
-  <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
-  </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__wrapper">
+                    <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар участника" />
+                    <div class="profile__info">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button type="button" class="profile__edit"></button>
+                        <p class="profile__subtitle">Исследователь океана</p>
+                    </div>
+                </div>
+                <button type="button" class="profile__add"></button>
+            </section>
 
-  <main class="content">
-  <section class="profile">
-    <div class="profile__wrapper">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар участника" />
-      <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__edit"></button>
-        <p class="profile__subtitle">Исследователь океана</p>
-      </div>
-    </div>
-    <button type="button" class="profile__add"></button>
-  </section>
+            <section class="elements">
+                <ul class="elements__list">
+                    <li class="card">
+                        <img class="card__image" src="./images/karashaevsk.jpg" alt="Карачаевск" />
+                        <div class="card__info">
+                            <p class="card__title">Карачаевск</p>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус" />
+                        <div class="card__info">
+                            <p class="card__title">Гора Эльбрус</p>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
+                        <div class="card__info">
+                            <p class="card__title">Домбай</p>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__image" src="./images/Volga.jpg" alt="Волга" />
+                        <div class="card__info">
+                            <p class="card__title">Река Волга</p>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__image" src="./images/Ural.jpg" alt="Урал" />
+                        <div class="card__info">
+                            <p class="card__title">Урал</p>
+                            <button type="button" class="card__like_dark"></button>
+                        </div>
+                    </li>
 
-  <section class="elements">
-    <ul class="elements__list">
-      <li class="card">
-        <img class="card__image" src="./images/karashaevsk.jpg" alt="Карачаевск" />
-        <div class="card__info">
-          <p class="card__title">Карачаевск</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="./images/elbrus.jpg" alt="Эльбрус" />
-        <div class="card__info">
-          <p class="card__title">Гора Эльбрус</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="./images/dombai.jpg" alt="Домбай" />
-        <div class="card__info">
-          <p class="card__title">Домбай</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="./images/Volga.jpg" alt="Волга" />
-        <div class="card__info">
-          <p class="card__title">Река Волга</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
-      <li class="card">
-        <img class="card__image" src="./images/Ural.jpg" alt="Урал" />
-        <div class="card__info">
-          <p class="card__title">Урал</p>
-          <button type="button" class="card__like_dark"></button>
-        </div>
-      <li class="card">
-        <img class="card__image" src="./images/Saint-Peterburg.jpg" alt="Санкт-Петербург" />
-        <div class="card__info">
-          <p class="card__title">Санкт-Петербург</p>
-          <button type="button" class="card__like"></button>
-        </div>
-      </li>
-    </ul>
-  </section>
-</body>
-</main>
+                    <li class="card">
+                        <img class="card__image" src="./images/Saint-Peterburg.jpg" alt="Санкт-Петербург" />
+                        <div class="card__info">
+                            <p class="card__title">Санкт-Петербург</p>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
 
-<footer class="footer">
-  <p class="footer__copyright">© 2020 Mesto Russia</p>
-</footer>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
 
-<section class="popup popup_opened">
-  <div class="popup__container">
-    <div class="popup__toggle"></div>
-    <form class="form">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="form__input">
-        <input type="text" name="name" class="form__input form__input_type_name" placeholder="Жак-Ив Кусто"/>
-        <input type="text" name="descrition" class="form__input form__input_type_descrition" placeholder="Исследователь океана"/>
-      </fieldset>
-      <fieldset class="form__button">
-        <button type="submit" class="form__button form__button_type_submit">Сохранить</button>
-      </fieldset>  
-    </form>
-  </div>
-</section>
+        <section class="popup popup_opened">
+            <div class="popup__container">
+                <div class="popup__toggle"></div>
+                <form class="form">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <fieldset class="form__input">
+                        <input type="text" name="name" class="form__input form__input_type_name" placeholder="Жак-Ив Кусто" />
+                        <input type="text" name="descrition" class="form__input form__input_type_descrition" placeholder="Исследователь океана" />
+                    </fieldset>
+                    <fieldset class="form__button">
+                        <button type="submit" class="form__button form__button_type_submit">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </body>
 </html>
