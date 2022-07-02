@@ -1,0 +1,17 @@
+.card__like_dark {
+  background-image: url(../../../../images/Like-dark.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  width: 22px;
+  height: 19px;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card__like_dark:hover {
+  opacity: 0.5;
+}
