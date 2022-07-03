@@ -19,6 +19,7 @@
 @media screen and (max-width: 694px) {
   .profile__edit {
       margin-bottom: 5px;
-      background-size: 18px 18px;
+      width: 18px;
+      height: 18px;
   }
 }
