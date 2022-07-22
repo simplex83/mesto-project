@@ -51,21 +51,21 @@ const initialCards = [
     },
 ];
 // объявление функций открытия и закрытия модальных окон
-function OpenPopUp(popUp) {
+function openPopUp(popUp) {
     popUp.classList.add("popup_opened");
 }
-function ClosePopUp(popUp) {
+function closePopUp(popUp) {
     popUp.classList.remove("popup_opened");
 }
 // объявление функции редактирование профиля
-function FormSubmitProfile(evt) {
+function handleFormSubmitProfile(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    ClosePopUp(popupEdit);
+    closePopUp(popupEdit);
 }
 // объявление функции добавления новой карточки
-function CreateNewCard(newImage, newTitle) {
+function createNewCard(newImage, newTitle) {
     // создаем клон шаблона
     const cardNew = templateCards.cloneNode(true);
     // добавляем элементы наполнения
@@ -76,41 +76,46 @@ function CreateNewCard(newImage, newTitle) {
     cardNew.querySelector(".card__like").addEventListener("click", function (evt) {
         evt.target.classList.toggle("card__like_dark");
     });
-    cardNew.querySelector(".card__image").addEventListener("click", CreatePopupZoom);
+    cardNew.querySelector(".card__image").addEventListener("click", createPopupZoom);
     cardNew.querySelector(".card__remove").addEventListener("click", function (evt) {
         evt.target.closest(".card").remove();
     });
     return cardNew;
 }
 // объявление функции добавления стартового набора карточек
-function CreateCardsSet(Cards) {
+function createCardsSet(Cards) {
     Cards.forEach(function (element) {
-        const card = CreateNewCard(element.link, element.name);
+        const card = createNewCard(element.link, element.name);
         elements.append(card);
     });
 }
 //  загружаем стартовый набор карточек
-CreateCardsSet(initialCards);
+createCardsSet(initialCards);
 //  объявление функции создания зум-попапа
-function CreatePopupZoom(evt) {
+function createPopupZoom(evt) {
     imageZoom.src = evt.target.src;
     imageZoom.alt = evt.target.alt;
     textZoom.textContent = evt.target.alt;
-    popupZoom.classList.add("popup_opened");
+    openPopUp(popupZoom)
 }
 // объявление функции добавления новой карточки через модальное окно
-function FormSubmitContent(evt) {
+function handleFormSubmitContent(evt) {
     evt.preventDefault();
-    const newCard = CreateNewCard(linkInput.value, placeInput.value);
+    const newCard = createNewCard(linkInput.value, placeInput.value);
     elements.prepend(newCard);
-    ClosePopUp(popupAdd);
+    linkInput.value ='';
+    placeInput.value = '';
+    closePopUp(popupAdd);
 }
 
-buttonProfileEdit.addEventListener("click", () => OpenPopUp(popupEdit));
-buttonAddContent.addEventListener("click", () => OpenPopUp(popupAdd));
-popupEditClose.addEventListener("click", () => ClosePopUp(popupEdit));
-popupAddClose.addEventListener("click", () => ClosePopUp(popupAdd));
-popupZoomClose.addEventListener("click", () => ClosePopUp(popupZoom));
+buttonProfileEdit.addEventListener("click", () => {
+    openPopUp(popupEdit);
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;});
+buttonAddContent.addEventListener("click", () => openPopUp(popupAdd));
+popupEditClose.addEventListener("click", () => closePopUp(popupEdit));
+popupAddClose.addEventListener("click", () => closePopUp(popupAdd));
+popupZoomClose.addEventListener("click", () => closePopUp(popupZoom));
 
-formSubmitProfile.addEventListener("click", FormSubmitProfile);
-formSubmitContent.addEventListener("click", FormSubmitContent);
+formSubmitProfile.addEventListener("click", handleFormSubmitProfile);
+formSubmitContent.addEventListener("click", handleFormSubmitContent);
