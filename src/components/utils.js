@@ -1,4 +1,4 @@
-import {popupZoom, imageZoom,textZoom, profileName, profileJob, popupEdit,nameInput,jobInput, linkInput, placeInput,popupAdd } from "./variables";
+import {popupZoom, imageZoom,textZoom, profileName, profileJob, popupEdit,nameInput,jobInput, linkInput, placeInput,popupAdd,formSubmitContent} from "./variables";
 import {openPopUp, closePopUp} from "./modal.js";
 import {createNewCard, elements} from "./cards.js";
 //  создания зум-попапа
@@ -18,6 +18,7 @@ export function handleFormSubmitProfile(evt) {
 //  добавление новой карточки через модальное окно
 export function handleFormSubmitContent(evt) {
   evt.preventDefault();
+  formSubmitContent.setAttribute("disabled", true);
   const newCard = createNewCard(linkInput.value, placeInput.value);
   elements.prepend(newCard);
   linkInput.value ='';

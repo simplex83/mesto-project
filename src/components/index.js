@@ -12,8 +12,6 @@ buttonProfileEdit.addEventListener("click", () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;});
 buttonAddContent.addEventListener("click", () => openPopUp(popupAdd));
-popupEditClose.addEventListener("click", () => closePopUp(popupEdit));
-popupAddClose.addEventListener("click", () => closePopUp(popupAdd));
 popupZoomClose.addEventListener("click", () => closePopUp(popupZoom));
 formSubmitProfile.addEventListener("click", handleFormSubmitProfile);
 formSubmitContent.addEventListener("click", handleFormSubmitContent);

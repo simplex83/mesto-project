@@ -1,11 +1,11 @@
 // объявление функций открытия и закрытия модальных окон
 export function openPopUp(popUp) {
   popUp.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc); //размещаем слушатель нажатия на кнопку
+  document.addEventListener("keydown", closePopupEsc); //размещается обработчик Escape
 }
 export function closePopUp(popUp) {
   popUp.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc); //удаляем слушатель нажатия на кнопку
+  document.removeEventListener("keydown", closePopupEsc); //удаляется обработчик Escape
 }
 //   закрытие попапа Esc
 export const closePopupEsc = (evt) => {
