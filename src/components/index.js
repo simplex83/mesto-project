@@ -12,7 +12,6 @@ buttonProfileEdit.addEventListener("click", () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;});
 buttonAddContent.addEventListener("click", () => openPopUp(popupAdd));
-popupZoomClose.addEventListener("click", () => closePopUp(popupZoom));
 formSubmitProfile.addEventListener("click", handleFormSubmitProfile);
 formSubmitContent.addEventListener("click", handleFormSubmitContent);
 
@@ -29,7 +28,7 @@ enableValidation ({
   });
   
   
-  
+
 
 
 
