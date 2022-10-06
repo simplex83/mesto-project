@@ -1,4 +1,4 @@
-// объявление функций открытия и закрытия модальных окон
+// открытие и закрытие модальных окон
 export function openPopUp(popUp) {
   popUp.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEsc); //размещается обработчик Escape
@@ -7,14 +7,14 @@ export function closePopUp(popUp) {
   popUp.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEsc); //удаляется обработчик Escape
 }
-//   закрытие попапа Esc
+//   закрытие через Esc
 export const closePopupEsc = (evt) => {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_opened");
     closePopUp(popupOpened);
   }
 };
-//   закрытие попапов по клику на оверлей
+//   закрытие по клику на оверлей
 export const closePopupOverlay = document.querySelectorAll('.popup').forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (

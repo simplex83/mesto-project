@@ -14,9 +14,10 @@
   .elements__list {
       grid-template-columns: repeat(2, 1fr);
       max-width: calc(100% - 2 * 20px);
+      justify-content: center;
   }
 }
-@media screen and (max-width: 694px) {
+@media screen and (max-width: 670px) {
   .elements__list {
       grid-template-columns: 1fr;
       max-width: 320px;

@@ -12,7 +12,9 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__wrapper">
-                    <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар участника"/>
+                    <button type="button" class="profile__avatar">
+                        <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Аватар участника"/>
+                    </button>
                     <div class="profile__info">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
                         <button type="button" class="profile__edit"></button>
@@ -53,7 +55,6 @@
                 <button type="button" class="popup__toggle"></button>
                 <form class="form" name="add" novalidate>
                     <h2 class="popup__title">Новое место</h2>
-                    
                         <label class="form__field">
                             <input type="text" name="name" class="form__input form__input_type_name" id="place-input" placeholder="Название" minlength="2" maxlength="30" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
                             data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"required  />
@@ -78,6 +79,21 @@
             </div>
         </section>
 
+        <section class="popup popup_type_ava">
+            <div class="popup__container">
+                <button type="button" class="popup__toggle"></button>
+                <form class="form" name="ava" novalidate>
+                    <h2 class="popup__title">Обновить аватар</h2>
+                        <label class="form__field">
+                            <input type="url" name="descrition" class="form__input form__input_type_name" id="ava-input" placeholder="Ссылка на картинку" required />
+                            <span class="form__input-error ava-input-error"></span>
+                        </label>
+                        <button type="submit" class="form__button form__button_type_submit" id="submitAva">Сохранить</button> 
+                </form>
+            </div>
+        </section>
+
+
         <!-- Шаблон для карточек -->
         <template id="cards">
             <article class="card">
@@ -85,7 +101,11 @@
                 <button class="card__remove" type="button"></button>
                 <div class="card__info">
                     <p class="card__title"></p>
-                    <button class="card__like" type="button"></button>
+                    <div class="card__likes">
+                        <button class="card__like" type="button"></button> 
+                        <span class ="card__number"></span>
+                    </div>
+                    
                 </div>
             </article>
         </template>

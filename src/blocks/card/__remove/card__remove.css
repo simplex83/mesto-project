@@ -12,6 +12,7 @@
   box-sizing: border-box;
   transition: opacity .2s linear;
   cursor: pointer;
+
 };
 
 .card__remove:hover {
