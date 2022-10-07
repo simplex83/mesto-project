@@ -29,4 +29,4 @@ export const placeInput = document.querySelector("#place-input");
 export const linkInput = document.querySelector("#link-input");
 export const avaInput = document.querySelector("#ava-input");
 
-export const My_id = "354b29a3067190e076bcd090";
+export const myId = {};

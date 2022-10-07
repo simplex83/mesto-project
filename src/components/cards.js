@@ -1,6 +1,6 @@
 import {getCards,deleteCard } from './api.js'
 import {createPopupZoom, pressLike} from "./utils.js"
-import {My_id} from "./variables.js"
+import {myIdC} from "./variables.js"
 
 // шаблон карточки и контейнер для нее
 const templateCards = document.querySelector("#cards").content;
@@ -15,11 +15,11 @@ export function createNewCard(data, name, link, like) {
   const buttonLike = cardNew.querySelector(".card__like");
   const likeNumber = cardNew.querySelector(".card__number");
 
-  if (!(data.owner._id === My_id)) {
+  if (!(data.owner._id === myId.id)) {
     cardRemove.classList.add("card__remove_inactive");//  проверка моя/чужая карточка
   };
   arrLike.forEach((element) => {
-    if (element._id === My_id) {
+    if (element._id === myId.id) {
       buttonLike.classList.add("card__like_dark");//проверка ставил ли лайк на карточке
     }
   });
@@ -34,8 +34,11 @@ export function createNewCard(data, name, link, like) {
   });
   cardNew.querySelector(".card__image").addEventListener("click", createPopupZoom);//зум
   cardRemove.addEventListener("click", (evt) => {
-    deleteCard(data._id);
-    evt.target.closest(".card").remove();//удаление
+    deleteCard(data._id)
+    .then((data) => {
+      evt.target.closest(".card").remove()
+      })
+    .catch((err) => console.log(err)) //удаление
   });
   return cardNew;
 }
@@ -44,3 +47,5 @@ export function renderCards(data, name, link, like) {
     const card = createNewCard(data, name, link, like);
     elements.prepend(card);
 }
+
+

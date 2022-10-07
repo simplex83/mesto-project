@@ -15,7 +15,7 @@ export const closePopupEsc = (evt) => {
   }
 };
 //   закрытие по клику на оверлей
-export const closePopupOverlay = document.querySelectorAll('.popup').forEach((popup) => {
+document.querySelectorAll('.popup').forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (
       evt.target.classList.contains("popup") ||

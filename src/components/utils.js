@@ -1,7 +1,7 @@
-import {popupZoom, imageZoom,textZoom, profileName, profileJob, profileAva, popupEdit,nameInput,jobInput, linkInput, placeInput,popupAdd,formSubmitContent,formSubmitAva, popupAva, avaInput,buttonLike} from "./variables";
-import {openPopUp, closePopUp} from "./modal.js";
-import {createNewCard, elements} from "./cards.js";
-import{updateUserInfo,addNewCard,updateAva, addLike, removeLike} from "./api.js"
+import { popupZoom, imageZoom, textZoom, profileName, profileJob, profileAva, popupEdit, nameInput, jobInput, linkInput, placeInput, popupAdd, formSubmitContent, formSubmitAva, popupAva, avaInput, buttonLike, formSubmitProfile} from "./variables";
+import { openPopUp, closePopUp } from "./modal.js";
+import { createNewCard, elements, renderCards } from "./cards.js";
+import { updateUserInfo, addNewCard, updateAva, addLike, removeLike } from "./api.js"
 //  создания зум-попапа
 export function createPopupZoom(evt) {
   imageZoom.src = evt.target.src;
@@ -12,25 +12,39 @@ export function createPopupZoom(evt) {
 // редактирование профиля
 export function handleFormSubmitProfile(evt) {
   evt.preventDefault();
-  renderLoading(true);
+  renderLoading(true, formSubmitProfile);
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  updateUserInfo();
-  closePopUp(popupEdit);
+  updateUserInfo()
+    .then((data) => {
+      console.log(data);
+      closePopUp(popupEdit);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(false,formSubmitProfile);
+    });
 }
 //  добавление новой карточки через окно
 export function handleFormSubmitContent(evt) {
   evt.preventDefault();
-  formSubmitContent.setAttribute("disabled", true);
-  renderLoading(true);
-  addNewCard(placeInput.value, linkInput.value);
-  // evt.target.reset();
-  linkInput.value ='';
-  placeInput.value = '';
-  closePopUp(popupAdd);
+  renderLoading(true,formSubmitContent);
+  addNewCard()
+    .then((dataCard) => {
+      renderCards(dataCard, dataCard.name, dataCard.link, dataCard.likes);
+      linkInput.value = '';
+      placeInput.value = '';
+      formSubmitContent.setAttribute("disabled", true);
+      closePopUp(popupAdd);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(false,formSubmitContent);
+    });
+
 }
 // получение данных о пользователе
-export function renderUserInfo(name,job,avatar) {
+export function renderUserInfo(name, job, avatar) {
   profileName.textContent = name;
   profileJob.textContent = job;
   profileAva.src = avatar;
@@ -39,29 +53,43 @@ export function renderUserInfo(name,job,avatar) {
 export function handleFormSubmitAva(evt) {
   evt.preventDefault();
   formSubmitAva.setAttribute("disabled", true);
-  renderLoading(true);
+  renderLoading(true, formSubmitAva);
   profileAva.src = avaInput.value;
-  updateAva();
-  avaInput.value ='';
-  closePopUp(popupAva);
+  updateAva()
+    .then((data) => {
+    avaInput.value = '';
+    closePopUp(popupAva);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      renderLoading(false,formSubmitAva );
+    });
 }
 //  нажатие на лайк
 export function pressLike(cardId, number, button) {
   if (button.classList.contains("card__like_dark")) {
-    removeLike(number, cardId);
-    button.classList.remove("card__like_dark");
+    removeLike(number, cardId)
+      .then((data) => {
+        number.textContent = data.likes.length;
+        button.classList.remove("card__like_dark");
+      })
+      .catch((err) => console.log(err));
+    
   } else {
-    addLike(number,cardId);
-    button.classList.add("card__like_dark");
+    addLike(number, cardId)
+      .then((data) => {
+        number.textContent = data.likes.length;
+        button.classList.add("card__like_dark");
+      })
+      .catch((err) => console.log(err));
   }
 }
 //загрузка на сервер
-export function renderLoading(isLoading) {
-  const buttonSubmit = document.querySelector(".form__button_type_submit");
+export function renderLoading(isLoading, button) {
   if (isLoading) {
-    buttonSubmit.textContent = "Сохранение...";
+    button.textContent = "Сохранение...";
   } else {
-    buttonSubmit.textContent = "Сохранить";
+    button.textContent = "Сохранить";
   }
 }
 

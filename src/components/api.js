@@ -28,10 +28,6 @@ export function getUserInfo() {
     headers: config.headers,
   })
   .then((res) => checkResponse(res))
-  .then((data) => {
-    renderUserInfo(data.name, data.about, data.avatar)
-  })
-  .catch((err) => console.log(err));
 }
 // получение набор карточек
 export function getCards() {
@@ -40,12 +36,6 @@ export function getCards() {
     headers: config.headers,
   })
   .then((res) => checkResponse(res))
-  .then((dataCards) => {
-    dataCards.forEach(dataCard => {
-      renderCards(dataCard, dataCard.name, dataCard.link, dataCard.likes)
-    });
-  })
-  .catch((err) => console.log(err));
 }
 // обновление информации о пользователе
 export function updateUserInfo() {
@@ -58,13 +48,6 @@ export function updateUserInfo() {
     })
   })
   .then((res) => checkResponse(res))
-  .then((data) => {
-    console.log(data)
-  })
-  .catch((err) => console.log(err))
-  .finally(() => {
-    renderLoading(false);
-  });
 }
 // добавление новой карточки через окно
 export function addNewCard() {
@@ -77,13 +60,6 @@ export function addNewCard() {
     })
   })
   .then((res) => checkResponse(res))
-  .then((dataCard) => {
-    renderCards(dataCard, dataCard.name, dataCard.link, dataCard.likes)
-  })
-  .catch((err) => console.log(err))
-  .finally(() => {
-    renderLoading(false);
-  });
 }
 // обновление аватара
 export function updateAva() {
@@ -95,13 +71,6 @@ export function updateAva() {
     })
   })
   .then((res) => checkResponse(res))
-  .then((data) => {
-    console.log(data)
-  })
-  .catch((err) => console.log(err))
-  .finally(() => {
-    renderLoading(false);
-  });
 }
 // удаление карточки 
 export function deleteCard(cardId) {
@@ -110,8 +79,6 @@ export function deleteCard(cardId) {
     headers: config.headers,
     })
     .then((res) => checkResponse(res))
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err))
 }
 // удаление лайка
 export function removeLike(number,cardId) {
@@ -120,10 +87,6 @@ export function removeLike(number,cardId) {
     headers: config.headers,
   })
     .then((res) => checkResponse(res))
-    .then((data) => {
-      number.textContent = data.likes.length;
-    })
-    .catch((err) => console.log(err));
 }
 // добавление лайка
 export function addLike(number,cardId) {
@@ -132,8 +95,4 @@ export function addLike(number,cardId) {
     headers: config.headers,
   })
   .then((res) => checkResponse(res))
-  .then((data) => {
-      number.textContent = data.likes.length;
-    })
-    .catch((err) => console.log(err));
 }
