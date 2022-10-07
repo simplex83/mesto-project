@@ -1,6 +1,6 @@
 import {getCards,deleteCard } from './api.js'
 import {createPopupZoom, pressLike} from "./utils.js"
-import {myIdC} from "./variables.js"
+import {myId} from "./variables.js"
 
 // шаблон карточки и контейнер для нее
 const templateCards = document.querySelector("#cards").content;
