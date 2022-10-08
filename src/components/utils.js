@@ -13,11 +13,10 @@ export function createPopupZoom(evt) {
 export function handleFormSubmitProfile(evt) {
   evt.preventDefault();
   renderLoading(true, formSubmitProfile);
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
   updateUserInfo()
     .then((data) => {
-      console.log(data);
+      profileName.textContent = nameInput.value;
+      profileJob.textContent = jobInput.value;
       closePopUp(popupEdit);
     })
     .catch((err) => console.log(err))
@@ -54,9 +53,9 @@ export function handleFormSubmitAva(evt) {
   evt.preventDefault();
   formSubmitAva.setAttribute("disabled", true);
   renderLoading(true, formSubmitAva);
-  profileAva.src = avaInput.value;
   updateAva()
     .then((data) => {
+    profileAva.src = avaInput.value;
     avaInput.value = '';
     closePopUp(popupAva);
     })

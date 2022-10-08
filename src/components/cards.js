@@ -36,7 +36,7 @@ export function createNewCard(data, name, link, like) {
   cardRemove.addEventListener("click", (evt) => {
     deleteCard(data._id)
     .then((data) => {
-      evt.target.closest(".card").remove()
+      deleteCardElement(evt.target.closest(".card"))
       })
     .catch((err) => console.log(err)) //удаление
   });
@@ -48,4 +48,8 @@ export function renderCards(data, name, link, like) {
     elements.prepend(card);
 }
 
+function deleteCardElement(card) {
+  card.remove();
+  card = null;
+}
 
