@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "dev": "webpack serve",
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d dist"
+   "deploy": "scp -Сr ./dist/* simplex@158.160.115.116:/home/simplex/mesto-frontend"
   },
   "repository": {
     "type": "git",
